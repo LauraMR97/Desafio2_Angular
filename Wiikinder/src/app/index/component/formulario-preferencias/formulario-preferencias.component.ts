@@ -14,7 +14,7 @@ export class FormularioPreferenciasComponent implements OnInit {
 
   constructor() {
     this.nombre='Wiikinder';
-    this.imagen='../assets/index.jpg';
+    this.imagen='../assets/formulario.jpg';
     this.titulo='Tus';
     this.titulo2='Preferencias';
    }
