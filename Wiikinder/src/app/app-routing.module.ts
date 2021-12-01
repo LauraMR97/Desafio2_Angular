@@ -5,6 +5,10 @@ const routes: Routes = [
 {
   path:'',
 loadChildren:()=>import('./index/index.module').then((m)=>m.IndexModule)
+},
+{
+  path:'**',
+redirectTo:''
 }
 ];
 

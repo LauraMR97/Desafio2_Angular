@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   public nombre : string;
   public imagen: string;
   public titulo: string;
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
     this.imagen='../assets/index.jpg';
     this.titulo='Welcome';
    }
+
   ngOnInit(): void {
   }
 
