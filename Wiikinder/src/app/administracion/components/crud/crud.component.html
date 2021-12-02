@@ -11,35 +11,28 @@
 
         <main>
             <section class="row fondoGeneral">
-                <table class="table table-sm">
-                    <thead>
-                        <tr class="table-primary">
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-secondary">
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr class="table-success">
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr class="table-danger">
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div *ngIf="personas.length>0" class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">#</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Activo</th>
+                                <th scope="col">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-secondary" *ngFor="let persona of personas; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{persona.correo}}</td>
+                                <td>{{persona.nombre}}</td>
+                                <td>{{persona.activo}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </main>
 
