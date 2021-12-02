@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.nombre='Wiikinder';
-    this.imagen='../assets/index.png';
+    this.imagen='../assets/index.webp';
     this.titulo='Welcome';
     this.logo='../assets/logo.png';
 
