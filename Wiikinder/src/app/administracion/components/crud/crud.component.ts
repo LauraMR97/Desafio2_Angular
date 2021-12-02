@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RestAdministracionCrudService} from 'src/app/administracion/services/rest-administracion-crud.service';
 
 @Component({
   selector: 'app-crud',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrudComponent implements OnInit {
 
-  constructor() { }
+  constructor(private restCrudService: RestAdministracionCrudService) { }
 
   ngOnInit(): void {
+    this.getUsuarios();
   }
 
+  public getUsuarios(){
+this.restCrudService.getUsuarios().subscribe(
+  response=>{
+    console.log(response);
+  }
+)
+  }
 }
