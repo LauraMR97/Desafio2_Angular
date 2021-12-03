@@ -10,28 +10,30 @@
         </header>
 
         <main>
-            <section class="row fondoGeneral">
-                <div *ngIf="personas.length>0" class="table-responsive">
-                    <table class="table table-sm">
-                        <thead>
-                            <tr class="table-primary">
-                                <th scope="col">#</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Activo</th>
-                                <th scope="col">Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-secondary" *ngFor="let persona of personas; index as i">
-                                <td>{{i+1}}</td>
-                                <td>{{persona.correo}}</td>
-                                <td>{{persona.nombre}}</td>
-                                <td>{{persona.activo}}</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <section class="row fondoGeneral d-flex justify-content-center pt-3">
+                <div class="col-12 col-sm-12 col-md-8">
+                    <div *ngIf="personas.length>0" class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Activo</th>
+                                    <th scope="col">Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-secondary" *ngFor="let persona of personas; index as i">
+                                    <td>{{i+1}}</td>
+                                    <td>{{persona.correo}}</td>
+                                    <td>{{persona.nombre}}</td>
+                                    <td>{{persona.activo}}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </main>
