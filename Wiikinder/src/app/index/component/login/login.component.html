@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <div class="row py-3 px-3">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <img class="img-fluid" src={{imagen}}>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 fondoGeneral">
+                    <div class="row pt-5 d-flex justify-content-center">
+                        <h1 class="col-12 col-sm-12 col-md-12 col-lg-12 text-center tituloLogo">{{nombre}}</h1>
+                        <img class="logo" src={{logo}}>
+                        <h2 class="col-12 col-sm-12 col-md-12 col-lg-12 pt-3 text-center">{{titulo}}</h2>
+                    </div>
+
+
+                    <!-- El formulario se llama como la variable Formgroup en el ts-->
+
+                    <form [formGroup]="loginUsuario" (ngSubmit)="onSubmit()" class="py-3">
+
+                        <div class=" row">
+                            <div class="col-1 col-sm-1 col-md-8 col-lg-8 text-center">
+                                <label class="form-label" for="exampleInputEmail1">Correo:</label>
+                            </div>
+                        </div>
+
+                        <div class=" row d-flex justify-content-center">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <input class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                            </div>
+                        </div>
+
+                        <!--Validacion Email-->
+                        <div *ngIf="submitted && formulario['email'].errors">
+                            <div class=" row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                    <div *ngIf="formulario['email'].errors['required']">El email no puede estar vacio</div>
+                                    <div *ngIf="formulario['email'].errors['email']">El email debe ser un email valido</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!------------------------>
+
+                        <div class=" row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div id="emailHelp" class="form-text">Nunca ofrezcas tu e-mail o contraseña a nadie.</div>
+                            </div>
+                        </div>
+
+
+                        <div class=" row pt-4">
+                            <div class="col-1 col-sm-1 col-md-8 col-lg-8 text-center">
+                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" for="exampleInputPassword1" class="form-label">Contraseña:</label>
+                            </div>
+                        </div>
+
+                        <div class=" row d-flex justify-content-center">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                <input class="col-12 col-sm-12 col-md-12 col-lg-12" type="password" class="form-control" id="exampleInputPassword1" formControlName="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                            </div>
+                        </div>
+
+                        <!--Validacion Contraseña-->
+                        <div *ngIf="submitted && formulario['password'].errors">
+                            <div class=" row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                    <div *ngIf="formulario['password'].errors['required']"> La contraseña no puede estar vacia</div>
+                                    <div *ngIf="formulario['password'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!------------------------>
+                        <div class="row pt-4 d-flex justify-content-center">
+                            <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit">Aceptar</button>
+                            <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2" type="submit">Registrar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
