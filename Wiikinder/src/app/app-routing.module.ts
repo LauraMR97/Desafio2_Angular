@@ -7,6 +7,14 @@ const routes: Routes = [
 loadChildren:()=>import('./index/index.module').then((m)=>m.IndexModule)
 },
 {
+  path:'administracion',
+loadChildren:()=>import('./administracion/administracion.module').then((m)=>m.AdministracionModule)
+},
+{
+  path:'usuario',
+loadChildren:()=>import('./user/user.module').then((m)=>m.UserModule)
+},
+{
   path:'**',
 redirectTo:''
 }
