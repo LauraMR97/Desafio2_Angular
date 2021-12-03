@@ -1,3 +1,16 @@
+@font-face {
+    font-family: MagicalMistery;
+    src: url(../../../../assets/MagicalMystery.ttf) format("opentype");
+}
+
+h1,
+h2 {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: MagicalMistery;
+}
+
 .fondoGeneral {
     background-color: #e2cddc;
 }
@@ -10,6 +23,17 @@ h5,
 p,
 label {
     color: #b02261;
+}
+
+button {
+    background-color: #b02261;
+}
+
+.tituloLogo {
+    background: linear-gradient(rgb(135, 53, 230), rgb(255, 0, 200));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px #000000);
 }
 
 .logo {
