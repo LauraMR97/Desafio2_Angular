@@ -7,11 +7,14 @@
                     <img class="img-fluid" src={{imagen}}>
                 </div>
 
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 fondoGeneral titulos">
-                    <div class="row pt-5">
-                        <h1 class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">{{nombre}}</h1>
-                        <h2 class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center pt-3">{{titulo}}</h2>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 fondoGeneral">
+                    <div class="row pt-5 d-flex justify-content-center">
+                        <h1 class="col-12 col-sm-12 col-md-12 col-lg-12 text-center tituloLogo">{{nombre}}</h1>
+                        <img class="logo" src={{logo}}>
+                        <h2 class="col-12 col-sm-12 col-md-12 col-lg-12 pt-3 text-center">{{titulo}}</h2>
                     </div>
+
+
                     <!-- El formulario se llama como la variable Formgroup en el ts-->
 
                     <form [formGroup]="loginUsuario" (ngSubmit)="onSubmit()" class="py-3">

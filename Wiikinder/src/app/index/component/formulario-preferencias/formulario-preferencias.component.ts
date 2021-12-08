@@ -10,13 +10,13 @@ export class FormularioPreferenciasComponent implements OnInit {
   public nombre : string;
   public imagen: string;
   public titulo: string;
-  public titulo2: string;
+  public logo: string;
 
   constructor() {
     this.nombre='Wiikinder';
     this.imagen='../assets/formulario.jpg';
-    this.titulo='Tus';
-    this.titulo2='Preferencias';
+    this.titulo='Tus Preferencias';
+    this.logo='../assets/logo.png';
    }
 
   ngOnInit(): void {
