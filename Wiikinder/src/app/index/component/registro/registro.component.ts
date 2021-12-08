@@ -23,6 +23,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private restUserService: RestIndexLoginService,
+    private router: Router,
     private notificationService: AvisosService) {
     this.nombre='Wiikinder';
     this.imagen='../assets/registro.jpg';
@@ -83,6 +84,11 @@ onReset(){
   this.submitted=false;
   this.nuevoUsuario.reset();
 }
+
+onVolver(){
+  this.router.navigate(['']);
+}
+
 }
 
 

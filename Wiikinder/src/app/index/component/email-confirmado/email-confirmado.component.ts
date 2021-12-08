@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-email-confirmado',
@@ -12,7 +13,7 @@ export class EmailConfirmadoComponent implements OnInit {
   public titulo: string;
   public logo: string;
 
-  constructor() {
+  constructor(   private router: Router) {
     this.nombre='Wiikinder';
     this.imagen='../assets/envioEmail.webp';
     this.titulo='Enviado!';
@@ -21,5 +22,7 @@ export class EmailConfirmadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onVolver(){
+    this.router.navigate(['']);
+  }
 }
