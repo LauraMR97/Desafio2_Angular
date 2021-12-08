@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AmigosComponent implements OnInit {
 
-  constructor() { }
+
+  public nombre : string;
+  public logo: string;
+
+  constructor() {
+    this.nombre='Wiikinder';
+    this.logo='../assets/logo.png';
+   }
 
   ngOnInit(): void {
   }

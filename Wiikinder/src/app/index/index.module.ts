@@ -6,6 +6,8 @@ import { LoginComponent } from './component/login/login.component';
 import { RegistroComponent } from './component/registro/registro.component';
 import { FormularioPreferenciasComponent } from './component/formulario-preferencias/formulario-preferencias.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmailConfirmadoComponent } from './component/email-confirmado/email-confirmado.component';
+import { RegistroConfirmadoComponent } from './component/registro-confirmado/registro-confirmado.component';
 
 
 
@@ -14,7 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     LoginComponent,
        RegistroComponent,
-       FormularioPreferenciasComponent
+       FormularioPreferenciasComponent,
+       EmailConfirmadoComponent,
+       RegistroConfirmadoComponent,
   ],
   imports: [
     CommonModule,
