@@ -8,6 +8,9 @@ import { FormularioPreferenciasComponent } from './component/formulario-preferen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmailConfirmadoComponent } from './component/email-confirmado/email-confirmado.component';
 import { RegistroConfirmadoComponent } from './component/registro-confirmado/registro-confirmado.component';
+import { PassOlvidadaComponent } from './component/pass-olvidada/pass-olvidada.component';
+import { SharedModule } from '../shared/shared.module';
+import { UserRoutingModule } from '../user/user-routing.module';
 
 
 
@@ -19,12 +22,15 @@ import { RegistroConfirmadoComponent } from './component/registro-confirmado/reg
        FormularioPreferenciasComponent,
        EmailConfirmadoComponent,
        RegistroConfirmadoComponent,
+       PassOlvidadaComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     IndexRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserRoutingModule
   ]
 })
 export class IndexModule { }
