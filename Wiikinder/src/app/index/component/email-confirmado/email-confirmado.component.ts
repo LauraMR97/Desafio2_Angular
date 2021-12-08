@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.scss']
+  selector: 'app-email-confirmado',
+  templateUrl: './email-confirmado.component.html',
+  styleUrls: ['./email-confirmado.component.scss']
 })
-export class RegistroComponent implements OnInit {
+export class EmailConfirmadoComponent implements OnInit {
 
   public nombre : string;
   public imagen: string;
@@ -14,8 +14,8 @@ export class RegistroComponent implements OnInit {
 
   constructor() {
     this.nombre='Wiikinder';
-    this.imagen='../assets/registro.jpg';
-    this.titulo='Registro';
+    this.imagen='../assets/envioEmail.webp';
+    this.titulo='Enviado!';
     this.logo='../assets/logo.png';
    }
 
