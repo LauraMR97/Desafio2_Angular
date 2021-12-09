@@ -10,8 +10,13 @@ import { PersonasResponse } from '../../models/req-resp';
 export class CrudComponent implements OnInit {
 
   public personas: any = []
+  public nombre : string;
+  public logo: string;
 
-  constructor(private restCrudService: RestAdministracionCrudService) { }
+  constructor(private restCrudService: RestAdministracionCrudService) {
+    this.nombre='Wiikinder';
+    this.logo='../assets/logo.png';
+  }
 
   ngOnInit(): void {
     this.getUsuarios();
