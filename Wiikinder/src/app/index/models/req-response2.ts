@@ -5,4 +5,6 @@ export interface UserResponseRegister{
   ciudad:string,
   edad:number,
   password: string,
+  passRepeat: string,
+  id_genero: number
 }

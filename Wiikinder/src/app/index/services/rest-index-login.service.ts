@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {User} from '../models/user';
 import {Persona} from '../models/nuevoUser';
 import {UserResponse} from '../models/req-response';

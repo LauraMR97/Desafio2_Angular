@@ -9,6 +9,8 @@ export class Persona{
       obj['ciudad'],
       obj['edad'],
       obj['password'],
+      obj['passRepeat'],
+      obj['id_genero'],
     );
   }
 
@@ -20,5 +22,7 @@ export class Persona{
     public ciudad:string,
     public edad:number,
     public password: string,
+    public passRepeat: string,
+    public id_genero: number
   ){}
 }

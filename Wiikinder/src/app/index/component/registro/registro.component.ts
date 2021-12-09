@@ -30,6 +30,7 @@ export class RegistroComponent implements OnInit {
     this.titulo='Registro';
     this.logo='../assets/logo.png';
 
+
     this.nuevoUsuario= this.formBuilder.group({
       nombre:['',[Validators.required]],
       nick:['',[Validators.required]],
@@ -37,7 +38,8 @@ export class RegistroComponent implements OnInit {
       ciudad:['',[Validators.required]],
       correo:['',[Validators.required, Validators.email]],
       password:['',[Validators.required, Validators.pattern]],
-      password2:['',[Validators.required, Validators.pattern]]
+      passRepeat:['',[Validators.required, Validators.pattern]],
+      id_genero:['',Validators.required]
     });
    }
 
@@ -62,7 +64,10 @@ export class RegistroComponent implements OnInit {
    this.nuevoUsuario.value.correo,
    this.nuevoUsuario.value.ciudad,
    this.nuevoUsuario.value.edad,
-   this.nuevoUsuario.value.password);
+   this.nuevoUsuario.value.password,
+   this.nuevoUsuario.value.passRepeat,
+   this.nuevoUsuario.value.id_genero=parseInt(this.nuevoUsuario.value.id_genero)
+   );
 
    console.log(user);
     console.log("El usuario: " +user.correo);
