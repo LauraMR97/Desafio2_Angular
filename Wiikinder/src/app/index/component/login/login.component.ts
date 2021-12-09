@@ -67,6 +67,8 @@ export class LoginComponent implements OnInit {
        next:(user)=>{
          this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/usuario/menu', {queryParams: this.user});
         this.user= user;
+        this.onMenu(this.user);
+
        },
        error: e =>{
          this.notificacionService.showMessage(`Fallo en el login: `+e);
@@ -88,5 +90,10 @@ export class LoginComponent implements OnInit {
   onRegister(){
     this.router.navigate(['registro']);
   }
+
+  onMenu(user:User){
+    this.router.navigate(['usuario/menu',this.user]);
+  }
+
 
 }
