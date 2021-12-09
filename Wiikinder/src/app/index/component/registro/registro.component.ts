@@ -23,11 +23,13 @@ export class RegistroComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private restUserService: RestIndexLoginService,
+    private router: Router,
     private notificationService: AvisosService) {
     this.nombre='Wiikinder';
     this.imagen='../assets/registro.jpg';
     this.titulo='Registro';
     this.logo='../assets/logo.png';
+
 
     this.nuevoUsuario= this.formBuilder.group({
       nombre:['',[Validators.required]],
@@ -36,7 +38,8 @@ export class RegistroComponent implements OnInit {
       ciudad:['',[Validators.required]],
       correo:['',[Validators.required, Validators.email]],
       password:['',[Validators.required, Validators.pattern]],
-      password2:['',[Validators.required, Validators.pattern]]
+      passRepeat:['',[Validators.required, Validators.pattern]],
+      id_genero:['',Validators.required]
     });
    }
 
@@ -61,7 +64,10 @@ export class RegistroComponent implements OnInit {
    this.nuevoUsuario.value.correo,
    this.nuevoUsuario.value.ciudad,
    this.nuevoUsuario.value.edad,
-   this.nuevoUsuario.value.password);
+   this.nuevoUsuario.value.password,
+   this.nuevoUsuario.value.passRepeat,
+   this.nuevoUsuario.value.id_genero=parseInt(this.nuevoUsuario.value.id_genero)
+   );
 
    console.log(user);
     console.log("El usuario: " +user.correo);
@@ -70,7 +76,7 @@ export class RegistroComponent implements OnInit {
 
    this.restUserService.addUser(user).subscribe({
      next:()=>{
-       this.notificationService.showMessage(`Usuario ${user.correo} registrado correctamente'`,'');
+       this.notificationService.showMessage(`Usuario ${user.correo} registrado correctamente'`,'/formulario-preferencias');
      },
      error: e =>{
        this.notificationService.showMessage(`Fallo en el registro: `+e);
@@ -83,6 +89,11 @@ onReset(){
   this.submitted=false;
   this.nuevoUsuario.reset();
 }
+
+onVolver(){
+  this.router.navigate(['']);
+}
+
 }
 
 
