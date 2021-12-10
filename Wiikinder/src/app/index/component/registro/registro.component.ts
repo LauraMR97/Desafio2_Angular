@@ -77,6 +77,7 @@ export class RegistroComponent implements OnInit {
    this.restUserService.addUser(user).subscribe({
      next:()=>{
        this.notificationService.showMessage(`Usuario ${user.correo} registrado correctamente'`,'/formulario-preferencias');
+       this.restUserService.darCorreoPersonaRegistrandose(user.correo);
      },
      error: e =>{
        this.notificationService.showMessage(`Fallo en el registro: `+e);

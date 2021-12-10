@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {User} from '../models/user';
 import {Persona} from '../models/nuevoUser';
 import {UserResponse} from '../models/req-response';
-import {map} from 'rxjs';
+import {BehaviorSubject, map} from 'rxjs';
 
 
 @Injectable({
@@ -11,6 +11,7 @@ import {map} from 'rxjs';
 })
 export class RestIndexLoginService {
 
+  public correo = new BehaviorSubject<string>("");
   constructor(private http:HttpClient) { }
 
   //Hacer login
@@ -51,5 +52,13 @@ export class RestIndexLoginService {
       'Content-Type' : 'application/json',
     });
     return this.http.post(url,user,{headers: headers});
+  }
+
+  public darCorreo(correo: string){
+    this.correo.next(correo);
+  }
+
+  public darCorreoPersonaRegistrandose(correo: string){
+    this.correo.next(correo);
   }
 }
