@@ -58,4 +58,7 @@ export class RestIndexLoginService {
     this.correo.next(correo);
   }
 
+  public darCorreoPersonaRegistrandose(correo: string){
+    this.correo.next(correo);
+  }
 }
