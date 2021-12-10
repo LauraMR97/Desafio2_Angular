@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import {User} from '../models/user';
 import {Persona} from '../models/nuevoUser';
+import {Formulario} from '../models/formulario';
 import {UserResponse} from '../models/req-response';
 import {BehaviorSubject, map} from 'rxjs';
 
@@ -52,6 +53,14 @@ export class RestIndexLoginService {
       'Content-Type' : 'application/json',
     });
     return this.http.post(url,user,{headers: headers});
+  }
+
+  public addForm(formulario: Formulario){
+    const url: string="http://127.0.0.1:8000/api/formularioPreferencias";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post(url,formulario,{headers: headers});
   }
 
   public darCorreo(correo: string){
