@@ -38,10 +38,15 @@ export class MenuUsuarioComponent implements OnInit {
   public getUsuariosYDiferencias(){
   this.restUserService.getUsuariosYDiferencias(this.correo).subscribe((response)=>{
       this.diferencia=response;
+      this.restUserService.darCorreo(this.correo);
     });
   }
 
   onVolver(){
     this.router.navigate(['']);
+  }
+
+  onMiPerfil(){
+    this.router.navigate(['/usuario/miPerfil']);
   }
 }
