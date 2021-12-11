@@ -7,6 +7,7 @@ import { AmigosComponent } from './components/amigos/amigos.component';
 import { PerfilesAgenosComponent } from './components/perfiles-agenos/perfiles-agenos.component';
 import { MiPerfilComponent } from './components/mi-perfil/mi-perfil.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     CommonModule,
     UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserModule { }
