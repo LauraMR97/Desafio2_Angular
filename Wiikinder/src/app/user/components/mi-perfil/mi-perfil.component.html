@@ -42,7 +42,7 @@
 
                                 <div class="col-7 col-sm-10 col-md-3 col-lg-3">
                                     <label class="form-label">Contraseña:</label>
-                                    <input class="form-control" value="{{p.password}}" type="text" formControlName="password">
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="{{p.password}}" type="password" class="form-control" id="exampleInputPassword1" formControlName="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                                 </div>
                             </div>
 
@@ -50,12 +50,29 @@
                             <div class="row justify-content-center pt-4 pb-4">
                                 <div class="col-7 col-sm-10 col-md-3 col-lg-3">
                                     <label class="form-label" for="exampleInputEmail1">Repetir Contraseña:</label>
-                                    <input class="form-control" value="{{p.password}}" formControlName="passwordRepeat">
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="{{p.password}}" type="passRepeat" class="form-control" id="exampleInputPassword1" formControlName="passRepeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                                 </div>
+
 
                                 <div class="col-7 col-sm-10 col-md-3 col-lg-3">
                                     <label class="form-label">Ciudad:</label>
-                                    <input class="form-control" value="{{p.ciudad}}" type="text" formControlName="passwordRepeat">
+                                    <input class="form-control" value="{{p.ciudad}}" type="text" formControlName="ciudad">
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label" for="exampleInputEmail1">Edad:</label>
+                                    <input class="form-control" value="{{p.edad}}" formControlName="passwordRepeat">
+                                </div>
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-6 col-lg-6">
+                                    <label class="form-label">Descripcion:</label>
+                                    <textarea class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" name="textarea" rows="5" cols="20" formControlName="descripcion">{{p.descripcion}}</textarea>
                                 </div>
                             </div>
                         </form>
