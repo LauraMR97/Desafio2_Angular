@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl,FormGroup, Validators } from '@angular/forms';
 import {AvisosService} from 'src/app/shared/services/avisos.service';
 import { RestUserService } from '../../services/rest-user.service';
+import {PerfilPropio} from '../../models/perfil';
+
 @Component({
   selector: 'app-mi-perfil',
   templateUrl: './mi-perfil.component.html',
