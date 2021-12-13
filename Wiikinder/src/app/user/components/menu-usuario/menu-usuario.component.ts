@@ -61,8 +61,7 @@ export class MenuUsuarioComponent implements OnInit {
     this.router.navigate(['/usuario/amigos']);
   }
   mostrar(correo: string){
-    this.modal.open(PerfilesAgenosComponent, {size: 'md'});
-
+    this.modal.open(PerfilesAgenosComponent, {size: 'lg'});
     this.restUserService.perfilTrigger.emit(correo);
   }
 }
