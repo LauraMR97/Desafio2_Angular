@@ -28,7 +28,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="table-secondary" *ngFor="let d of diferencia; index as i">
+                                    <tr class="table-secondary" *ngFor="let d of diferencia; index as i" click="mostrar(d.correo)">
                                         <td>{{d.correo}}</td>
                                         <td class="text-end"><button class="btn btn-primary mb-2 mx-2" type="submit">Ver</button></td>
                                     </tr>
