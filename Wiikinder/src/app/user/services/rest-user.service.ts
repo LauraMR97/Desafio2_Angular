@@ -54,5 +54,10 @@ export class RestUserService {
     );
   }
 
+  public getAmigosLista(correo: string){
+    let url: string="http://127.0.0.1:8000/api/amigos";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
 
 }

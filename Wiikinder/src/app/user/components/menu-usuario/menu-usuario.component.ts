@@ -49,4 +49,8 @@ export class MenuUsuarioComponent implements OnInit {
   onMiPerfil(){
     this.router.navigate(['/usuario/miPerfil']);
   }
+
+  onAmigos(){
+    this.router.navigate(['/usuario/amigos']);
+  }
 }
