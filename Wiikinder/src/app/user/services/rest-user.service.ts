@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { PersonasResponse } from '../models/req-resp-personas';
 import {BehaviorSubject, map} from 'rxjs';
+import {PerfilPropio} from '../models/perfil';
+import {PerfilResponse} from '../models/req-response.perfil';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +39,20 @@ export class RestUserService {
     let dato= {correo:correo};
     return this.http.post(url,dato,{headers: headers});
   }
+
+
+
+  public editarPerfil(perfil: PerfilPropio){
+    let url: string="http://127.0.0.1:8000/api/modificarPerfil";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post<PerfilResponse>(url,perfil,{headers:headers}).pipe(
+      map((resp:PerfilResponse)=>{
+        return PerfilPropio.userfromJSON(perfil);
+      })
+    );
+  }
+
+
 }
