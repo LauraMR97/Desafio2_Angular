@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro-confirmado',
@@ -12,7 +13,9 @@ export class RegistroConfirmadoComponent implements OnInit {
   public titulo: string;
   public logo: string;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.nombre='Wiikinder';
     this.imagen='../assets/registroConfirmado.webp';
     this.titulo='Ya esta!';
@@ -22,4 +25,7 @@ export class RegistroConfirmadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onVolver(){
+    this.router.navigate(['/']);
+  }
 }

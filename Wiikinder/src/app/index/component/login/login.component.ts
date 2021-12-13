@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl,FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {User} from '../../models/user';
+import {RestIndexLoginService} from '../../services/rest-index-login.service';
+import {AvisosService} from 'src/app/shared/services/avisos.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,12 +20,18 @@ export class LoginComponent implements OnInit {
 
   loginUsuario: FormGroup;
   submitted: boolean =false;
+  user?:User;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private restLoginService: RestIndexLoginService,
+    private notificacionService: AvisosService){
+
     this.nombre='Wiikinder';
     this.imagen='../assets/index.webp';
     this.titulo='Welcome';
     this.logo='../assets/logo.png';
+
 
     //Estoy definiendo un formulario reactivo en Angular
     //Con dos controles
@@ -46,10 +57,23 @@ export class LoginComponent implements OnInit {
 
       //Podemos obtener en un json TODOS los valores de los controles del formulario
       let user= this.loginUsuario.value;
+      this.user= new User("",this.loginUsuario.value.email, this.loginUsuario.value.password);
 
       console.log("El usuario: " +user.email);
       console.log("La contrseña: " +user.password);
       this.onReset();
+
+     this.restLoginService.login(this.user).subscribe({
+       next:(user)=>{
+         this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/usuario/menu', {queryParams: this.user});
+        this.user= user;
+        this.restLoginService.darCorreo(user.correo);
+
+       },
+       error: e =>{
+         this.notificacionService.showMessage(`Fallo en el login: `+e);
+       }
+     })
   }
 
   //Limpia el Formulario
@@ -57,5 +81,11 @@ export class LoginComponent implements OnInit {
     this.submitted=false;
     this.loginUsuario.reset();
   }
+
+  onRegister(){
+    this.router.navigate(['registro']);
+  }
+
+
 
 }
