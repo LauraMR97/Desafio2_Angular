@@ -64,19 +64,19 @@
 
                                 <div class="col-7 col-sm-10 col-md-3 col-lg-3">
                                     <label class="form-label">Contraseña:</label>
-                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="{{p.password}}" type="password" class="form-control" id="exampleInputPassword1" formControlName="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                                    <div *ngIf="submitted && formulario['password'].errors">
-                                        <div *ngIf="formulario['password'].errors['required']"> La contraseña no puede estar vacia</div>
-                                        <div *ngIf="formulario['password'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="{{p.password}}" type="password" class="form-control" id="exampleInputPassword1" formControlName="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                                    <div *ngIf="submitted && formulario['password1'].errors">
+                                        <div *ngIf="formulario['password1'].errors['required']"> La contraseña no puede estar vacia</div>
+                                        <div *ngIf="formulario['password1'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
                                     </div>
                                 </div>
 
                                 <div class="col-7 col-sm-10 col-md-3 col-lg-3">
                                     <label class="form-label" for="exampleInputEmail1">Repetir Contraseña:</label>
                                     <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="{{p.password}}" type="password" class="form-control" id="exampleInputPassword1" formControlName="passRepeat" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                                    <div *ngIf="submitted && formulario['password'].errors">
-                                        <div *ngIf="formulario['password'].errors['required']"> La contraseña no puede estar vacia</div>
-                                        <div *ngIf="formulario['password'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
+                                    <div *ngIf="submitted && formulario['passRepeat'].errors">
+                                        <div *ngIf="formulario['passRepeat'].errors['required']"> La contraseña no puede estar vacia</div>
+                                        <div *ngIf="formulario['passRepeat'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
                                     </div>
                                 </div>
 

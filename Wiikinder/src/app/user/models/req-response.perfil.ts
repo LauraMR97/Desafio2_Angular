@@ -1,4 +1,4 @@
-export interface FormResponse{
+export interface PerfilResponse{
   descripcion: string
   correo: string
   correoAnt: string

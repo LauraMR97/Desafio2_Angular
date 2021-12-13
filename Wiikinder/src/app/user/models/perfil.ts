@@ -1,7 +1,7 @@
-import {FormResponse} from "../models/req-response.perfil";
+import {PerfilResponse} from "../models/req-response.perfil";
 export class PerfilPropio{
 
-  static userfromJSON(obj: FormResponse){
+  static userfromJSON(obj: PerfilResponse){
     return new PerfilPropio(
       obj['descripcion'],
       obj['correo'],
