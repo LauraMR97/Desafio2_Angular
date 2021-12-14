@@ -13,6 +13,7 @@ import {BehaviorSubject, map} from 'rxjs';
 export class RestIndexLoginService {
 
   public correo = new BehaviorSubject<string>("");
+  public rolAsignado = new BehaviorSubject<string>("");
   constructor(private http:HttpClient) { }
 
   //Hacer login
@@ -23,10 +24,15 @@ export class RestIndexLoginService {
     });
     return this.http.post<UserResponse>(url,user,{headers:headers}).pipe(
       map((resp:UserResponse)=>{
+        this.darRol(resp.rol);
         return User.userfromJSON(user);
       })
     );
   }
+
+public darRol(rol: number){
+  this.rolAsignado.next(String(rol));
+}
 
   /**
    * Buscar a una persona por el correo para enviar un email con una pass nueva

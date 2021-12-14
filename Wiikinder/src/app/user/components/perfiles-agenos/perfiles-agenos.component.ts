@@ -13,6 +13,9 @@ export class PerfilesAgenosComponent implements OnInit {
   public nombre : string;
   public fotoPerfil: string;
   public logo: string;
+  public chica: string;
+  public chico: string;
+  public androgino: string;
   public correo: string;
   public perfil: any= [];
   public modeloPerfil: any= [];
@@ -26,6 +29,9 @@ export class PerfilesAgenosComponent implements OnInit {
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
     this.correo='';
+    this.chica='../assets/mujer.png';
+    this.chico='../assets/hombre.png';
+    this.androgino='../assets/androgino.png';
 
 
     this.userService.perfilTrigger.subscribe((data: string) =>{

@@ -19,8 +19,23 @@
                     </div>
 
                     <div *ngIf="perfil != undefined">
-                        <div class="row text-center">
-                            <h1 class="col-12 col-sm-12 col-md-12 col-lg-12">{{modeloPerfil.nick}} icono genero</h1>
+                        <div *ngIf='modeloPerfil.id_genero == 1'>
+                            <div class="row text-center">
+                                <h1 class="col-12 col-sm-12 col-md-12 col-lg-12">{{modeloPerfil.nick}} <img class="col-2" src="{{chico}}"></h1>
+
+                            </div>
+                        </div>
+                        <div *ngIf='modeloPerfil.id_genero == 2'>
+                            <div class="row text-center">
+                                <h1 class="col-12 col-sm-12 col-md-12 col-lg-12">{{modeloPerfil.nick}} <img class="col-2" src="{{chica}}"></h1>
+
+                            </div>
+                        </div>
+                        <div *ngIf='modeloPerfil.id_genero == 3'>
+                            <div class="row text-center">
+                                <h1 class="col-12 col-sm-12 col-md-12 col-lg-12">{{modeloPerfil.nick}} <img class="col-2" src="{{androgino}}"></h1>
+
+                            </div>
                         </div>
 
                         <div class="row text-center border-top">
