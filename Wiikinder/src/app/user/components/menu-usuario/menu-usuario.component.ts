@@ -3,6 +3,10 @@ import { User } from 'src/app/index/models/user';
 import { Router } from '@angular/router';
 import { RestUserService } from '../../services/rest-user.service';
 import {RestIndexLoginService} from '../../../index/services/rest-index-login.service';
+import { PerfilesAgenosComponent } from '../perfiles-agenos/perfiles-agenos.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap'
+import { PerfilAgeno } from '../../models/perfilAgeno';
+
 
 
 @Component({
@@ -17,13 +21,16 @@ export class MenuUsuarioComponent implements OnInit {
   public logo: string;
   public correo: string;
 
+
   constructor(
     private restUserService: RestUserService,
     private router: Router,
-    private restUserIndexService: RestIndexLoginService) {
+    private restUserIndexService: RestIndexLoginService,
+    private modal: NgbModal) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
     this.correo='';
+
    }
   ngOnInit(): void {
     this.getCorreo();
@@ -48,5 +55,13 @@ export class MenuUsuarioComponent implements OnInit {
 
   onMiPerfil(){
     this.router.navigate(['/usuario/miPerfil']);
+  }
+
+  onAmigos(){
+    this.router.navigate(['/usuario/amigos']);
+  }
+  mostrar(correo: string){
+    this.modal.open(PerfilesAgenosComponent, {size: 'lg'});
+    this.restUserService.perfilTrigger.emit(correo);
   }
 }
