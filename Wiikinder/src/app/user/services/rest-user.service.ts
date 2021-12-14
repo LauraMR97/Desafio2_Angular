@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { PersonasResponse } from '../models/req-resp-personas';
 import {BehaviorSubject, map} from 'rxjs';
 import {PerfilPropio} from '../models/perfil';
 import {PerfilResponse} from '../models/req-response.perfil';
+import { PerfilAgeno } from '../models/perfilAgeno';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestUserService {
 
+  @Output() perfilTrigger: EventEmitter<string>= new EventEmitter();
   public urlUser: string ="http://127.0.0.1:8000/api/preferenciasUsuario";
   public correo = new BehaviorSubject<string>("");
   constructor(private http: HttpClient) { }
@@ -59,5 +61,12 @@ export class RestUserService {
     let dato= {correo:correo};
     return this.http.post(url,dato);
   }
+
+  public getPreferenciasOtraPersona(correo: string){
+    let url: string="http://127.0.0.1:8000/api/perfilPersonas";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
+
 
 }
