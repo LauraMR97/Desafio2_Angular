@@ -3,6 +3,11 @@ import { User } from 'src/app/index/models/user';
 import { Router } from '@angular/router';
 import { RestUserService } from '../../services/rest-user.service';
 import {RestIndexLoginService} from '../../../index/services/rest-index-login.service';
+import { PerfilesAgenosComponent } from '../perfiles-agenos/perfiles-agenos.component';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { PerfilAgeno } from '../../models/perfilAgeno';
+import {AvisosService} from 'src/app/shared/services/avisos.service';
+
 
 
 @Component({
@@ -12,18 +17,23 @@ import {RestIndexLoginService} from '../../../index/services/rest-index-login.se
 })
 export class MenuUsuarioComponent implements OnInit {
 
-  public diferencia: any = []
+  public diferencia: any = [];
+  public respuesta: any = [];
   public nombre : string;
   public logo: string;
   public correo: string;
 
+
   constructor(
     private restUserService: RestUserService,
     private router: Router,
-    private restUserIndexService: RestIndexLoginService) {
+    private restUserIndexService: RestIndexLoginService,
+    private modal: NgbModal,
+    private notificacionService: AvisosService) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
     this.correo='';
+
    }
   ngOnInit(): void {
     this.getCorreo();
@@ -52,5 +62,18 @@ export class MenuUsuarioComponent implements OnInit {
 
   onAmigos(){
     this.router.navigate(['/usuario/amigos']);
+  }
+  mostrar(correo: string){
+    this.modal.open(PerfilesAgenosComponent, {size: 'lg'});
+    this.restUserService.perfilTrigger.emit(correo);
+  }
+
+  add(correoAmigo: string){
+    this.restUserService.addAmigo(correoAmigo,this.correo).subscribe((response)=>{
+      this.respuesta=response;
+      this.notificacionService.showMessage(correoAmigo + 'Peticion Enviada');
+    });
+    this.router.navigate(['/usuario/menu']);
+
   }
 }

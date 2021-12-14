@@ -30,7 +30,11 @@
                                 <tbody>
                                     <tr class="table-secondary" *ngFor="let d of diferencia; index as i">
                                         <td>{{d.correo}}</td>
-                                        <td class="text-end"><button class="btn btn-primary mb-2 mx-2" type="submit">Ver</button></td>
+                                        <td class="text-end"><button class="btn btn-primary mb-2 mx-2" type="submit" (click)="mostrar(d.correo)">Ver</button>
+                                            <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="add(d.correo)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                          </svg></button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -42,6 +46,7 @@
                             <div class="row pt-4 d-flex justify-content-center border-top border-white">
                                 <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
                             </div>
+                            <app-avisos></app-avisos>
                         </form>
                     </div>
                 </div>
