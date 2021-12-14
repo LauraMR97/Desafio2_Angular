@@ -6,19 +6,18 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { PerfilesAgenosComponent } from '../perfiles-agenos/perfiles-agenos.component';
 import {AvisosService} from 'src/app/shared/services/avisos.service';
 
-
 @Component({
-  selector: 'app-amigos',
-  templateUrl: './amigos.component.html',
-  styleUrls: ['./amigos.component.scss']
+  selector: 'app-peticiones',
+  templateUrl: './peticiones.component.html',
+  styleUrls: ['./peticiones.component.scss']
 })
-export class AmigosComponent implements OnInit {
+export class PeticionesComponent implements OnInit {
 
-  public amigos: any = [];
+  public peticiones: any = [];
+  public respuesta: any = [];
   public nombre : string;
   public logo: string;
   public correo: string;
-  public respuesta: any = [];
 
   constructor(
     private router: Router,
@@ -34,7 +33,7 @@ export class AmigosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCorreo();
-    this.getAmigos();
+    this.getPeticiones();
   }
 
   public getCorreo(){
@@ -43,31 +42,30 @@ export class AmigosComponent implements OnInit {
     });
   }
 
-  public getAmigos(){
-    this.restUserService.getAmigosLista(this.correo).subscribe((response)=>{
-        this.amigos=response;
+
+  public getPeticiones(){
+    this.restUserService.getSolicitudesAmistad(this.correo).subscribe((response)=>{
+        this.peticiones=response;
         this.restUserService.darCorreo(this.correo);
+        console.log(this.peticiones);
       });
     }
 
-  onVolver(){
-    this.router.navigate(['/usuario/menu']);
-  }
-
-  onPeticiones(){
-    this.router.navigate(['/usuario/peticiones']);
-  }
-
-  borrar(correoAmigo: string){
-    this.restUserService.borrarAmigo(correoAmigo,this.correo).subscribe((response)=>{
-      this.respuesta=response;
-      this.notificacionService.showMessage(correoAmigo + 'Borrado');
-    });
-    this.router.navigate(['/usuario/menu']);
-  }
 
   mostrar(correo: string){
     this.modal.open(PerfilesAgenosComponent, {size: 'lg'});
     this.restUserService.perfilTrigger.emit(correo);
+  }
+
+  aceptar(correoAmigo: string){
+    this.restUserService.aceptarNuevoAmigo(correoAmigo,this.correo).subscribe((response)=>{
+      this.respuesta=response;
+      this.notificacionService.showMessage(correoAmigo + ' Añadido');
+    });
+    this.router.navigate(['/usuario/peticiones']);
+  }
+
+  onVolver(){
+    this.router.navigate(['/usuario/amigos']);
   }
 }

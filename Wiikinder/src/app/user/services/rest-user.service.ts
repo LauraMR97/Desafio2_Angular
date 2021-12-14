@@ -42,7 +42,35 @@ export class RestUserService {
     return this.http.post(url,dato,{headers: headers});
   }
 
+  public borrarAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/borrarAmigo";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
 
+  public aceptarNuevoAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/aniadirAmigo";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+  public addAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/enviarPeti";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
 
   public editarPerfil(perfil: PerfilPropio){
     let url: string="http://127.0.0.1:8000/api/modificarPerfil";
@@ -58,6 +86,12 @@ export class RestUserService {
 
   public getAmigosLista(correo: string){
     let url: string="http://127.0.0.1:8000/api/amigos";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
+
+  public getSolicitudesAmistad(correo: string){
+    let url: string="http://127.0.0.1:8000/api/peticiones";
     let dato= {correo:correo};
     return this.http.post(url,dato);
   }

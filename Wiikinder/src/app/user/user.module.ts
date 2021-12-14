@@ -8,6 +8,7 @@ import { PerfilesAgenosComponent } from './components/perfiles-agenos/perfiles-a
 import { MiPerfilComponent } from './components/mi-perfil/mi-perfil.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PeticionesComponent } from './components/peticiones/peticiones.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AmigosComponent,
     PerfilesAgenosComponent,
     MiPerfilComponent,
+    PeticionesComponent,
   ],
   imports: [
     SharedModule,
