@@ -1,186 +1,145 @@
 <div class="container-fluid">
     <div class="row py-3 px-3">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    <img class="col-12 col-sm-12 col-md-12 col-lg-12" src={{imagen}}>
-                </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <img class="col-12" src={{imagen}}>
+        </div>
 
-
-
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 fondoGeneral">
-                    <div class="row pt-5 d-flex justify-content-center">
-                        <h1 class="col-12 col-sm-12 col-md-12 col-lg-12 text-center tituloLogo">{{nombre}}</h1>
-                        <img class="logo" src={{logo}}>
-                        <h2 class="col-12 col-sm-12 col-md-12 col-lg-12 pt-3 text-center">{{titulo}}</h2>
-                    </div>
-
-
-                    <form [formGroup]="rellenoFormulario" (ngSubmit)="onSubmit()" class="py-3">
-
-                        <div class=" row pt-4">
-                            <div class="col-5 col-sm-4 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Tipo de relaccion:</label>
-                            </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 fondoGeneral">
+            <form [formGroup]="rellenoFormulario" (ngSubmit)="onSubmit()" class="py-3">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-lg-8">
+                        <div class="row pt-5 d-flex justify-content-center">
+                            <h1 class="col-12 text-center tituloLogo">{{nombre}}</h1>
+                            <img class="logo" src={{logo}}>
+                            <h2 class="col-12  pt-3 text-center">{{titulo}}</h2>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <select class="form-select" aria-label="Default select example" formControlName="tipoRelaccion">
+
+                        <div class="col-12 pt-5">
+                            <label class="form-label">Tipo de relaccion:</label>
+                        </div>
+
+                        <div class="col-12">
+                            <select class="form-select" aria-label="Default select example" formControlName="tipoRelaccion">
                                 <option value="Amistad" selected>Amistad</option>
                                 <option value="Seria">Seria</option>
                                 <option value="Esporadica">Esporadica</option>
                               </select>
-                            </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-4 col-sm-3 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">¿Tienes Hijos?:</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">¿Tienes Hijos?:</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <select class="form-select" aria-label="Default select example" formControlName="numHijos">
+                        <div class="col-12">
+                            <select class="form-select" aria-label="Default select example" formControlName="numHijos">
                               <option value="1" selected>Si</option>
                               <option value="0">No</option>
                             </select>
-                            </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-6 col-sm-5 col-md-11 col-lg-11 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Numero de hijos que desea:</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Numero de hijos que desea:</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <input class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" type="number" formControlName="quiereHijos">
-                            </div>
+                        <div class="col-12">
+                            <input class="form-control" type="number" formControlName="quiereHijos">
                         </div>
+
 
                         <!--Validando numero de hijos-->
                         <div *ngIf="submitted && formulario['quiereHijos'].errors">
-                            <div class=" row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div *ngIf="formulario['quiereHijos'].errors['required']">El numero de hijos no puede quedar vacio</div>
-                                </div>
+                            <div class="col-12">
+                                <div *ngIf="formulario['quiereHijos'].errors['required']">El numero de hijos no puede quedar vacio</div>
                             </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-5 col-sm-3 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Genero Preferido:</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Genero Preferido:</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <select class="form-select" aria-label="Default select example" formControlName="generoPreferido">
+                        <div class="col-12">
+                            <select class="form-select" aria-label="Default select example" formControlName="generoPreferido">
                                   <option value="1" selected>Hombre</option>
                                   <option value="2">Mujer</option>
                                   <option value="3">Ambos</option>
                                 </select>
-                            </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-5 col-sm-3 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Interes Deporte (0-100):</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Interes Deporte (0-100):</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <input class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" type="number" formControlName="deporte">
-                            </div>
+                        <div class="col-12">
+                            <input class="form-control" type="number" formControlName="deporte">
                         </div>
+
 
                         <!--Validando deporte-->
                         <div *ngIf="submitted && formulario['deporte'].errors">
-                            <div class=" row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div *ngIf="formulario['deporte'].errors['required']">El campo no puede estar vacio</div>
-                                </div>
+                            <div class="col-12">
+                                <div *ngIf="formulario['deporte'].errors['required']">El campo no puede estar vacio</div>
                             </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-5 col-sm-3 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Interes Arte (0-100):</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Interes Arte (0-100):</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <input class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" type="number" formControlName="arte">
-                            </div>
+                        <div class="col-12">
+                            <input class="form-control" type="number" formControlName="arte">
                         </div>
+
 
                         <!--Validando arte-->
                         <div *ngIf="submitted && formulario['arte'].errors">
-                            <div class=" row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div *ngIf="formulario['arte'].errors['required']">El campo no puede estar vacio</div>
-                                </div>
+                            <div class="col-12">
+                                <div *ngIf="formulario['arte'].errors['required']">El campo no puede estar vacio</div>
                             </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-5 col-sm-3 col-md-9 col-lg-9 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Interes Politica (0-100):</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Interes Politica (0-100):</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                                <input class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" type="number" formControlName="politica">
-                            </div>
+
+                        <div class="col-12">
+                            <input class="form-control" type="number" formControlName="politica">
                         </div>
 
                         <!--Validando politica-->
                         <div *ngIf="submitted && formulario['politica'].errors">
-                            <div class=" row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div *ngIf="formulario['politica'].errors['required']">El campo no puede estar vacio</div>
-                                </div>
+                            <div class="col-12">
+                                <div *ngIf="formulario['politica'].errors['required']">El campo no puede estar vacio</div>
                             </div>
                         </div>
 
-                        <div class=" row pt-4">
-                            <div class="col-6 col-sm-5 col-md-11 col-lg-11 text-center">
-                                <label class="col-12 col-sm-12 col-md-12 col-lg-12" class="form-label">Descripcion:</label>
-                            </div>
+                        <div class="col-12 pt-3">
+                            <label class="form-label">Descripcion:</label>
                         </div>
 
-                        <div class=" row d-flex justify-content-center">
-                            <div class="col-12 col-sm-10 col-md-10 col-lg-10">
-                                <textarea class="col-12 col-sm-12 col-md-6 col-lg-6 form-control" name="textarea" rows="5" cols="20" formControlName="descripcion">Hablanos de ti</textarea>
-                            </div>
+                        <div class="col-12">
+                            <textarea class="form-control" name="textarea" rows="5" cols="20" formControlName="descripcion">Hablanos de ti</textarea>
                         </div>
+
 
                         <!--Validando Descripcion-->
                         <div *ngIf="submitted && formulario['descripcion'].errors">
-                            <div class=" row">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                                    <div *ngIf="formulario['descripcion'].errors['required']">La descripcion no puede estar vacia</div>
-                                </div>
+                            <div class="col-12">
+                                <div *ngIf="formulario['descripcion'].errors['required']">La descripcion no puede estar vacia</div>
                             </div>
                         </div>
-
-                        <div class="row pt-4 pb-3 d-flex justify-content-center">
-                            <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2" type="submit">Enviar</button>
-                        </div>
-
-                        <div class="row pt-4 d-flex justify-content-center border-top border-white">
-                            <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
-                        </div>
-                        <app-avisos></app-avisos>
-                    </form>
+                    </div>
                 </div>
-            </div>
+                <div class="row pt-4 pb-3 d-flex justify-content-center">
+                    <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2" type="submit">Enviar</button>
+                </div>
+
+                <div class="row pt-4 d-flex justify-content-center border-top border-white">
+                    <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                </div>
+                <app-avisos></app-avisos>
+            </form>
         </div>
     </div>
 </div>

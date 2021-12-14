@@ -65,13 +65,18 @@ export class LoginComponent implements OnInit {
       console.log("La contrseña: " +user.password);
       this.onReset();
 
+      this.getRol();
      this.restLoginService.login(this.user).subscribe({
        next:(user)=>{
-         //aqui filtro admin o user
+         if(this.rol=='2'){
          this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/usuario/menu', {queryParams: this.user});
         this.user= user;
-        this.getRol();
         this.restLoginService.darCorreo(user.correo);
+      }else{
+        this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/administracion/crud', {queryParams: this.user});
+        this.user= user;
+        this.restLoginService.darCorreo(user.correo);
+      }
        },
        error: e =>{
          this.notificacionService.showMessage(`Fallo en el login: `+e);

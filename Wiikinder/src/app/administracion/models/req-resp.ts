@@ -14,6 +14,5 @@ export interface PersonasResponse {
   tieneHijos:    number;
   tipoRelaccion: string;
   hijosDeseados: number;
-  created_at:    Date | null;
-  updated_at:    Date | null;
+  id_rol: number;
 }
