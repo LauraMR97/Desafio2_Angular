@@ -21,6 +21,7 @@ export class MenuUsuarioComponent implements OnInit {
   public respuesta: any = [];
   public nombre : string;
   public logo: string;
+  public logoOscuro: string;
   public correo: string;
   public tema: string;
 
@@ -33,6 +34,7 @@ export class MenuUsuarioComponent implements OnInit {
     private notificacionService: AvisosService) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo='';
     this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
    }

@@ -17,7 +17,9 @@ export class AmigosComponent implements OnInit {
   public amigos: any = [];
   public nombre : string;
   public logo: string;
+  public logoOscuro: string;
   public correo: string;
+  public tema: string;
   public respuesta: any = [];
 
   constructor(
@@ -29,7 +31,9 @@ export class AmigosComponent implements OnInit {
   ) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
    }
 
   ngOnInit(): void {

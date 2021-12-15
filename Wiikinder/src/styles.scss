@@ -37,10 +37,9 @@ h5,
 p,
 label {
     color: #b02261;
-}
-
-button {
-    background-color: #b02261;
+    &.oscuro {
+        color: #0c0506;
+    }
 }
 
 .tituloLogo {
@@ -57,4 +56,23 @@ button {
 .fondoHeaderYFooter {
     background-color: #5d498b;
     color: white;
+}
+
+
+/*------------------------------------*/
+
+.fondoGeneralOscuro {
+    background-color: #e5d7d1;
+}
+
+.tituloLogoOscuro {
+    background: linear-gradient(#e5d7d1, #b04746);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px #000000);
+}
+
+.fondoHeaderYFooterOscuros {
+    background-color: #351114;
+    color: #e5d7d1;
 }

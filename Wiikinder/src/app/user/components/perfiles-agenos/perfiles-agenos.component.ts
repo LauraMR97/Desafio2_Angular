@@ -16,9 +16,11 @@ export class PerfilesAgenosComponent implements OnInit {
   public chica: string;
   public chico: string;
   public androgino: string;
-  public correo: string;
   public perfil: any= [];
   public modeloPerfil: any= [];
+  public logoOscuro: string;
+  public correo: string;
+  public tema: string;
 
 
   constructor(
@@ -28,10 +30,12 @@ export class PerfilesAgenosComponent implements OnInit {
     this.nombre='Wiikinder';
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
-    this.correo='';
     this.chica='../assets/mujer.png';
     this.chico='../assets/hombre.png';
     this.androgino='../assets/androgino.png';
+    this.logoOscuro='../assets/logoOscuro.png';
+    this.correo='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
 
 
     this.userService.perfilTrigger.subscribe((data: string) =>{

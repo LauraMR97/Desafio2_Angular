@@ -16,10 +16,12 @@ export class MiPerfilComponent implements OnInit {
   public nombre : string;
   public fotoPerfil: string;
   public logo: string;
-  public correo: string;
   public correoAnt: string;
   public password2: string;
   public MIperfil: any = []
+  public logoOscuro: string;
+  public correo: string;
+  public tema: string;
 
   miPerfil:FormGroup;
   submitted: boolean =false;
@@ -32,9 +34,11 @@ export class MiPerfilComponent implements OnInit {
     this.nombre='Wiikinder';
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
-    this.correo='';
     this.correoAnt='';
     this.password2='';
+    this.logoOscuro='../assets/logoOscuro.png';
+    this.correo='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
 
     this.miPerfil= this.formBuilder.group({
       nombre:['',[Validators.required]],
@@ -113,6 +117,12 @@ export class MiPerfilComponent implements OnInit {
      this.miPerfil.value.tema
      );
 
+     if(this.miPerfil.value.tema=='claro'){
+       sessionStorage.setItem('tema','claro');
+     }else{
+      sessionStorage.setItem('tema','oscuro');
+     }
+
      this.restUserService.editarPerfil(perfil).subscribe({
        next:()=>{
          this.notificationService.showMessage(`Usuario ${perfil.correo} modificado correctamente'`,'/usuario/menu');
@@ -123,6 +133,5 @@ export class MiPerfilComponent implements OnInit {
        }
      })
 
-     this.router.navigate(['/usuario/menu']);
   }
 }
