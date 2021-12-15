@@ -7,6 +7,7 @@ export class User{
       obj['correo'],
       obj['password'],
       obj['rol'],
+      obj['tema']
     );
   }
 
@@ -15,6 +16,7 @@ export class User{
 public usuario: string,
 public correo: string,
 public password: string,
-public rol: number
+public rol: number,
+public tema: string
   ){}
 }

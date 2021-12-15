@@ -3,4 +3,5 @@ export interface UserResponse{
   correo: string,
   password: string
   rol:number
+  tema: string
 }

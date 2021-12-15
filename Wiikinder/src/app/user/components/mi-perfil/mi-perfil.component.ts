@@ -45,6 +45,7 @@ export class MiPerfilComponent implements OnInit {
       password1:['',[Validators.required, Validators.pattern]],
       passRepeat:['',[Validators.required, Validators.pattern]],
       descripcion:['',[Validators.required]],
+      tema:['',[Validators.required]],
     });
    }
   ngOnInit(): void {
@@ -60,6 +61,7 @@ export class MiPerfilComponent implements OnInit {
   public getMIPerfil(){
     this.restUserService.getMIPerfil(this.correo).subscribe((response)=>{
         this.MIperfil=response;
+        console.log( this.MIperfil);
         //Como es una llamada asincrona, obtengo mi perfil aqui y despues llamo a updateFrom para
         //poner los datos en el formulario
         this.updateForm();
@@ -80,6 +82,7 @@ export class MiPerfilComponent implements OnInit {
       this.miPerfil.controls['password1'].setValue(this.MIperfil[0].password);
       this.miPerfil.controls['passRepeat'].setValue(this.MIperfil[0].password);
       this.miPerfil.controls['ciudad'].setValue(this.MIperfil[0].ciudad);
+      this.miPerfil.controls['tema'].setValue(this.MIperfil[0].tema);
     }
 
   onVolver(){
@@ -107,6 +110,7 @@ export class MiPerfilComponent implements OnInit {
      this.miPerfil.value.ciudad,
      this.miPerfil.value.password1,
      this.password2=this.miPerfil.value.passRepeat,
+     this.miPerfil.value.tema
      );
 
      this.restUserService.editarPerfil(perfil).subscribe({

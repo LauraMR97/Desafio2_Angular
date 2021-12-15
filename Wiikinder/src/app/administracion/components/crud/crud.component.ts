@@ -75,4 +75,8 @@ export class CrudComponent implements OnInit {
     this.restCrudService.darCorreo(correo);
     this.router.navigate(['/administracion/editar']);
   }
+
+  add(){
+    this.router.navigate(['/administracion/crear']);
+  }
 }

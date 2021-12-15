@@ -25,6 +25,7 @@ export class RestIndexLoginService {
     return this.http.post<UserResponse>(url,user,{headers:headers}).pipe(
       map((resp:UserResponse)=>{
         this.darRol(resp.rol);
+        sessionStorage.setItem('tema', resp.tema);
         return User.userfromJSON(user);
       })
     );

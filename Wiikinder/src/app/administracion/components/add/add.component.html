@@ -1,1 +1,214 @@
-<p>add works!</p>
+<div class="container-fluid">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <header class="row  text-center fondoHeaderYFooter titulos">
+            <div class="col-11 col-sm-11 col-md-11 col-lg-11">
+                <div class="p-3">
+                    <div class="row">
+                        <h1 class="tituloLogo"><img class="col-4 col-sm-3 col-md-2 col-lg-2" src="{{logo}}">Wiikinder</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="row fondoGeneral d-flex justify-content-center pt-3">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                        <form [formGroup]="addForm">
+                            <div class="row justify-content-center pt-4">
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label" for="exampleInputEmail1">Correo:</label>
+                                    <input class="form-control" value="" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="correo">
+                                    <div *ngIf="submitted && formulario['correo'].errors">
+                                        <div *ngIf="formulario['correo'].errors['required']">El email no puede estar vacio</div>
+                                        <div *ngIf="formulario['correo'].errors['correo']">El email debe ser un email valido</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Nick:</label>
+                                    <input class="form-control" value="" formControlName="nick">
+                                    <div *ngIf="submitted && formulario['nick'].errors">
+                                        <div *ngIf="formulario['nick'].errors['required']">El nick no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Nombre:</label>
+                                    <input class="form-control" value="" formControlName="nombre">
+                                    <div *ngIf="submitted && formulario['nombre'].errors">
+                                        <div *ngIf="formulario['nombre'].errors['required']">El nombre no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row justify-content-center pt-4 pb-4">
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Contraseña:</label>
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="" type="password" class="form-control" id="exampleInputPassword1" formControlName="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                                    <div *ngIf="submitted && formulario['password1'].errors">
+                                        <div *ngIf="formulario['password1'].errors['required']"> La contraseña no puede estar vacia</div>
+                                        <div *ngIf="formulario['password1'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label" for="exampleInputEmail1">Repetir Contraseña:</label>
+                                    <input class="col-12 col-sm-12 col-md-12 col-lg-12" value="" type="password" class="form-control" id="exampleInputPassword1" formControlName="password2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                                    <div *ngIf="submitted && formulario['password2'].errors">
+                                        <div *ngIf="formulario['password2'].errors['required']"> La contraseña no puede estar vacia</div>
+                                        <div *ngIf="formulario['password2'].errors['pattern']">La contraseña debe tener al menos un dígito, una minúscula, una mayúscula y tener como mínimo 8 caracteres</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label" for="exampleInputEmail1">Rol:</label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="id_rol">
+                                    <option value="1" selected>Administrador</option>
+                                    <option value="2">Usuario</option>
+                                    <div *ngIf="submitted && formulario['id_rol'].errors">
+                                      <div *ngIf="formulario['id_rol'].errors['required']">El rol no puede estar vacio</div>
+                                    </div>
+                                  </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Genero:</label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="id_genero">
+                                <option value="1" selected>Hombre</option>
+                                <option value="2">Mujer</option>
+                                <option value="2">Ambos</option>
+                                <div *ngIf="submitted && formulario['id_genero'].errors">
+                                  <div *ngIf="formulario['id_genero'].errors['required']">El genero no puede estar vacio</div>
+                                </div>
+                              </select>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Genero Atrayente:</label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="generoPreferido">
+                              <option value="1" selected>Hombre</option>
+                              <option value="2">Mujer</option>
+                              <option value="2">Ambos</option>
+                              <div *ngIf="submitted && formulario['generoPreferido'].errors">
+                                <div *ngIf="formulario['generoPreferido'].errors['required']">El genero atrayente no puede estar vacio</div>
+                              </div>
+                            </select>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Tipo Relaccion:</label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="tipoRelaccion">
+                            <option value="Amistad" selected>Amistad</option>
+                            <option value="Seria">Seria</option>
+                            <option value="Esporadica">Esporadica</option>
+                            <div *ngIf="submitted && formulario['tipoRelaccion'].errors">
+                              <div *ngIf="formulario['tipoRelaccion'].errors['required']">La relaccion no puede estar vacia</div>
+                            </div>
+                          </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Ciudad:</label>
+                                    <input class="form-control" value="" formControlName="ciudad">
+                                    <div *ngIf="submitted && formulario['ciudad'].errors">
+                                        <div *ngIf="formulario['ciudad'].errors['required']">La ciudad no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Edad:</label>
+                                    <input class="form-control" value="" formControlName="edad">
+                                    <div *ngIf="submitted && formulario['edad'].errors">
+                                        <div *ngIf="formulario['edad'].errors['required']">La edad no puede estar vacia</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Descripcion:</label>
+                                    <textarea class="form-control" name="textarea" rows="1" cols="20" formControlName="descripcion">Hablanos de ti</textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Deporte (0-100):</label>
+                                    <input class="form-control" value="" type="number" formControlName="deporte">
+                                    <div *ngIf="submitted && formulario['deporte'].errors">
+                                        <div *ngIf="formulario['deporte'].errors['required']">El deporte no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Arte (0-100):</label>
+                                    <input class="form-control" value="" type="number" formControlName="arte">
+                                    <div *ngIf="submitted && formulario['arte'].errors">
+                                        <div *ngIf="formulario['arte'].errors['required']">El arte no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Politica (0-100):</label>
+                                    <input class="form-control" value="" type="number" formControlName="politica">
+                                    <div *ngIf="submitted && formulario['politica'].errors">
+                                        <div *ngIf="formulario['politica'].errors['required']">La politica no puede estar vacia</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center pt-4 pb-4">
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Tienes Hijos:</label>
+                                    <select class="form-select" aria-label="Default select example" formControlName="numHijos">
+                        <option value="1" selected>Si</option>
+                        <option value="0">No</option>
+                        <div *ngIf="submitted && formulario['numHijos'].errors">
+                          <div *ngIf="formulario['numHijos'].errors['required']">Tienes hijos no puede estar vacio</div>
+                        </div>
+                      </select>
+                                </div>
+
+                                <div class="col-7 col-sm-10 col-md-3 col-lg-3">
+                                    <label class="form-label">Hijos Deseados:</label>
+                                    <input class="form-control" value="" type="number" formControlName="quiereHijos">
+                                    <div *ngIf="submitted && formulario['quiereHijos'].errors">
+                                        <div *ngIf="formulario['quiereHijos'].errors['required']">hijos deseados no puede estar vacio</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row pt-4 d-flex justify-content-center">
+                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="add()">Añadir</button>
+                            </div>
+                            <app-avisos></app-avisos>
+                        </form>
+                    </div>
+                    <form>
+                        <div class="row pt-4  pb-3 d-flex justify-content-center border-top border-white">
+                            <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+
+        <footer class=" bg-light text-center text-lg-start row ">
+            <div class="text-center text-white p-3 titulos col-12 col-sm-12 col-md-12 col-lg-12 fondoHeaderYFooter ">
+                © 2021 Copyright: LauraM
+            </div>
+        </footer>
+
+    </div>
+</div>

@@ -4,6 +4,8 @@ import { PersonasResponse } from '../models/req-resp';
 import { editResponse } from '../models/req-resp-edit';
 import { PersonaCrud } from '../models/persona-crud';
 import {BehaviorSubject, map} from 'rxjs';
+import { PersonaNueva } from '../models/personaNueva';
+import { addResponse } from '../models/personaNueva-resp';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +60,18 @@ public editarUser(perfil: PersonaCrud){
   return this.http.post<editResponse>(url,perfil,{headers:headers}).pipe(
     map((resp:PersonaCrud)=>{
       return PersonaCrud.userfromJSON(perfil);
+    })
+  );
+}
+
+public addUser(perfil: PersonaNueva){
+  let url: string="http://127.0.0.1:8000/api/add";
+  let headers= new HttpHeaders({
+    'Content-Type' : 'application/json',
+  });
+  return this.http.post<addResponse>(url,perfil,{headers:headers}).pipe(
+    map((resp:PersonaNueva)=>{
+      return PersonaNueva.userfromJSON(perfil);
     })
   );
 }
