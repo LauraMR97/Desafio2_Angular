@@ -65,6 +65,14 @@ export class PeticionesComponent implements OnInit {
     this.router.navigate(['/usuario/peticiones']);
   }
 
+  declinar(correoAmigo: string){
+    this.restUserService.rechazarNuevoAmigo(correoAmigo,this.correo).subscribe((response)=>{
+      this.respuesta=response;
+      this.notificacionService.showMessage('Peticion de '+correoAmigo + ' Declinada');
+    });
+    this.router.navigate(['/usuario/menu']);
+  }
+
   onVolver(){
     this.router.navigate(['/usuario/amigos']);
   }

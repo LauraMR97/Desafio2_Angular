@@ -5,7 +5,9 @@ export class User{
     return new User(
       obj['usuario'],
       obj['correo'],
-      obj['password']
+      obj['password'],
+      obj['rol'],
+      obj['tema']
     );
   }
 
@@ -13,6 +15,8 @@ export class User{
   constructor(
 public usuario: string,
 public correo: string,
-public password: string
+public password: string,
+public rol: number,
+public tema: string
   ){}
 }

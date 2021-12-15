@@ -62,6 +62,16 @@ export class RestUserService {
     return this.http.post(url,dato,{headers: headers});
   }
 
+  public rechazarNuevoAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/borrarPeti";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
   public addAmigo(correoAmigo: string, correo:string){
     const url: string="http://127.0.0.1:8000/api/enviarPeti";
     let headers= new HttpHeaders({

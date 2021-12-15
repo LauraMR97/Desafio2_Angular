@@ -22,6 +22,7 @@ export class MenuUsuarioComponent implements OnInit {
   public nombre : string;
   public logo: string;
   public correo: string;
+  public tema: string;
 
 
   constructor(
@@ -33,7 +34,7 @@ export class MenuUsuarioComponent implements OnInit {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
     this.correo='';
-
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
    }
   ngOnInit(): void {
     this.getCorreo();
