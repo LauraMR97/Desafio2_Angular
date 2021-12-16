@@ -3,6 +3,7 @@ import {RestAdministracionCrudService} from 'src/app/administracion/services/res
 import { Router } from '@angular/router';
 import { RestIndexLoginService } from 'src/app/index/services/rest-index-login.service';
 import {AvisosService} from 'src/app/shared/services/avisos.service';
+import { RestUserService } from 'src/app/user/services/rest-user.service';
 
 @Component({
   selector: 'app-crud',
@@ -21,7 +22,8 @@ export class CrudComponent implements OnInit {
     private restCrudService: RestAdministracionCrudService,
     private router: Router,
     private restUserIndexService: RestIndexLoginService,
-    private notificacionService: AvisosService
+    private notificacionService: AvisosService,
+    private restUserService: RestUserService
     ) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
@@ -44,7 +46,11 @@ export class CrudComponent implements OnInit {
     })
   }
   onVolver(){
-    this.router.navigate(['']);
+    this.restUserService.desconectar(this.correo).subscribe((response)=>{
+      this.respuesta=response;
+      this.notificacionService.showMessage(this.correo + 'Te has desconectado, vuelve pronto!');
+    });
+    this.router.navigate([' ']);
   }
 
   borrar(correo: string){

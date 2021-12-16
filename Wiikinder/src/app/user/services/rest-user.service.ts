@@ -112,5 +112,14 @@ export class RestUserService {
     return this.http.post(url,dato);
   }
 
+  public desconectar(correo:string){
+    const url: string="http://127.0.0.1:8000/api/desc";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
 
 }
