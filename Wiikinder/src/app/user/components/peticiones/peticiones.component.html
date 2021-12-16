@@ -1,6 +1,7 @@
 <div *ngIf="(tema=='claro')">
     <div class="container-fluid">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div class="col-12">
             <header class="row  text-center fondoHeaderYFooter titulos">
                 <div class="col-11 col-sm-11 col-md-11 col-lg-11">
                     <div class="p-3">
@@ -14,25 +15,26 @@
             <main>
                 <section class="row fondoGeneral d-flex justify-content-center pt-3">
                     <div class="col-12 col-sm-12 col-md-8">
-                        <div *ngIf="amigos.length>0" class="table-responsive">
+                        <div *ngIf="peticiones.length>0" class="table-responsive">
                             <form>
                                 <table class="table table-sm">
                                     <thead>
                                         <tr class="table-primary">
                                             <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                </svg>Amigos Conectados</th>
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                              </svg>Peticiones</th>
                                             <th class="text-end" scope="col">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="table-secondary" *ngFor="let a of amigos; index as i">
-                                            <td>{{a.correo}}</td>
+                                        <tr class="table-secondary" *ngFor="let p of peticiones; index as i">
+                                            <td>{{p.correo_origen}}</td>
                                             <td class="text-end">
-                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="mostrar(a.correo)">Ver</button>
-                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="borrar(a.correo)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                                        </svg></button>
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="mostrar(p.correo_origen)">Ver</button>
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="aceptar(p.correo_origen)">Aceptar</button>
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="declinar(p.correo_origen)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                            </svg></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -41,11 +43,8 @@
                             </form>
                         </div>
                         <form>
-                            <div class="row pt-4 d-flex justify-content-center">
-                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onPeticiones()">Ver Peticiones</button>
-                            </div>
                             <div class="row pt-4 d-flex justify-content-center border-top border-white">
-                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)='onVolver()'>Volver</button>
                             </div>
                         </form>
                     </div>
@@ -62,8 +61,10 @@
 </div>
 
 <div *ngIf="(tema=='oscuro')">
+
     <div class="container-fluid">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+        <div class="col-12">
             <header class="row  text-center fondoHeaderYFooterOscuros titulos">
                 <div class="col-11 col-sm-11 col-md-11 col-lg-11">
                     <div class="p-3">
@@ -77,25 +78,26 @@
             <main>
                 <section class="row fondoGeneralOscuro d-flex justify-content-center pt-3">
                     <div class="col-12 col-sm-12 col-md-8">
-                        <div *ngIf="amigos.length>0" class="table-responsive">
+                        <div *ngIf="peticiones.length>0" class="table-responsive">
                             <form>
                                 <table class="table table-sm">
                                     <thead>
                                         <tr class="table-active">
                                             <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            </svg>Amigos Conectados</th>
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                              </svg>Peticiones</th>
                                             <th class="text-end" scope="col">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="table-danger" *ngFor="let a of amigos; index as i">
-                                            <td>{{a.correo}}</td>
+                                        <tr class="table-danger" *ngFor="let p of peticiones; index as i">
+                                            <td>{{p.correo_origen}}</td>
                                             <td class="text-end">
-                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="mostrar(a.correo)">Ver</button>
-                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="borrar(a.correo)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                                    </svg></button>
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="mostrar(p.correo_origen)">Ver</button>
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="aceptar(p.correo_origen)">Aceptar</button>
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="declinar(p.correo_origen)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                            </svg></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -104,11 +106,8 @@
                             </form>
                         </div>
                         <form>
-                            <div class="row pt-4 d-flex justify-content-center">
-                                <button class="oscuro col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onPeticiones()">Ver Peticiones</button>
-                            </div>
                             <div class="row pt-4 d-flex justify-content-center border-top border-white">
-                                <button class="oscuro col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                                <button class="oscuro col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)='onVolver()'>Volver</button>
                             </div>
                         </form>
                     </div>
@@ -122,5 +121,4 @@
 
         </div>
     </div>
-
 </div>

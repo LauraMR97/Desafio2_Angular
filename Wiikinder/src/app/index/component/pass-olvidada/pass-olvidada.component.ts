@@ -50,7 +50,7 @@ export class PassOlvidadaComponent implements OnInit {
       return;
 
       let user= this.buscarUsuario.value;
-      this.user= new User("",this.buscarUsuario.value.email,"");
+      this.user= new User("",this.buscarUsuario.value.email,"",0,"");
 
       console.log("El usuario: " +user.email);
       this.onReset();
@@ -61,7 +61,7 @@ export class PassOlvidadaComponent implements OnInit {
         this.user= user;
        },
        error: e =>{
-         this.notificacionService.showMessage(`Correo Invalido: `+e);
+         this.notificacionService.showMessage('Correo invalido');
        }
      })
      /*this.notificacionService.showMessage(

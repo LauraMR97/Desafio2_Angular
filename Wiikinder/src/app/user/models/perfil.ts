@@ -1,7 +1,7 @@
-import {FormResponse} from "../models/req-response.perfil";
+import {PerfilResponse} from "../models/req-response.perfil";
 export class PerfilPropio{
 
-  static userfromJSON(obj: FormResponse){
+  static userfromJSON(obj: PerfilResponse){
     return new PerfilPropio(
       obj['descripcion'],
       obj['correo'],
@@ -12,6 +12,7 @@ export class PerfilPropio{
       obj['ciudad'],
       obj['password1'],
       obj['password2'],
+      obj['tema'],
     );
   }
 
@@ -25,6 +26,7 @@ export class PerfilPropio{
     public edad: number,
     public ciudad: string,
     public password1: string,
-    public password2: string
+    public password2: string,
+    public tema: string
   ){}
 }

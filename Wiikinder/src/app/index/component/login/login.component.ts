@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   public imagen: string;
   public logo: string;
   public titulo: string;
+  public rol:string;
+  public tema: string;
 
   loginUsuario: FormGroup;
   submitted: boolean =false;
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
     this.imagen='../assets/index.webp';
     this.titulo='Welcome';
     this.logo='../assets/logo.png';
+    this.rol='';
+    this.tema='';
 
 
     //Estoy definiendo un formulario reactivo en Angular
@@ -57,24 +61,38 @@ export class LoginComponent implements OnInit {
 
       //Podemos obtener en un json TODOS los valores de los controles del formulario
       let user= this.loginUsuario.value;
-      this.user= new User("",this.loginUsuario.value.email, this.loginUsuario.value.password);
+      this.user= new User("",this.loginUsuario.value.email, this.loginUsuario.value.password,0,"");
 
       console.log("El usuario: " +user.email);
       console.log("La contrseña: " +user.password);
       this.onReset();
 
+      this.getRol();
      this.restLoginService.login(this.user).subscribe({
        next:(user)=>{
+         if(this.rol=='2'){
          this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/usuario/menu', {queryParams: this.user});
         this.user= user;
         this.restLoginService.darCorreo(user.correo);
-
+        //this.tema =(sessionStorage.getItem('tema') || '{}');
+      }else{
+        this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/administracion/crud', {queryParams: this.user});
+        this.user= user;
+        this.restLoginService.darCorreo(user.correo);
+      }
        },
        error: e =>{
-         this.notificacionService.showMessage(`Fallo en el login: `+e);
+         this.notificacionService.showMessage('Fallo en el login');
        }
      })
   }
+
+  public getRol(){
+    this.restLoginService.rolAsignado.subscribe(rol =>{
+      this.rol=rol;
+    });
+  }
+
 
   //Limpia el Formulario
   onReset(){

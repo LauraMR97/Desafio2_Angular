@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { PersonasResponse } from '../models/req-resp-personas';
 import {BehaviorSubject, map} from 'rxjs';
+import {PerfilPropio} from '../models/perfil';
+import {PerfilResponse} from '../models/req-response.perfil';
+import { PerfilAgeno } from '../models/perfilAgeno';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestUserService {
 
+  @Output() perfilTrigger: EventEmitter<string>= new EventEmitter();
   public urlUser: string ="http://127.0.0.1:8000/api/preferenciasUsuario";
   public correo = new BehaviorSubject<string>("");
   constructor(private http: HttpClient) { }
@@ -37,4 +41,85 @@ export class RestUserService {
     let dato= {correo:correo};
     return this.http.post(url,dato,{headers: headers});
   }
+
+  public borrarAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/borrarAmigo";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+  public aceptarNuevoAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/aniadirAmigo";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+  public rechazarNuevoAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/borrarPeti";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+  public addAmigo(correoAmigo: string, correo:string){
+    const url: string="http://127.0.0.1:8000/api/enviarPeti";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo,
+              correoAmigo: correoAmigo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+  public editarPerfil(perfil: PerfilPropio){
+    let url: string="http://127.0.0.1:8000/api/modificarPerfil";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post<PerfilResponse>(url,perfil,{headers:headers}).pipe(
+      map((resp:PerfilResponse)=>{
+        return PerfilPropio.userfromJSON(perfil);
+      })
+    );
+  }
+
+  public getAmigosLista(correo: string){
+    let url: string="http://127.0.0.1:8000/api/amigos";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
+
+  public getSolicitudesAmistad(correo: string){
+    let url: string="http://127.0.0.1:8000/api/peticiones";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
+
+  public getPreferenciasOtraPersona(correo: string){
+    let url: string="http://127.0.0.1:8000/api/perfilPersonas";
+    let dato= {correo:correo};
+    return this.http.post(url,dato);
+  }
+
+  public desconectar(correo:string){
+    const url: string="http://127.0.0.1:8000/api/desc";
+    let headers= new HttpHeaders({
+      'Content-Type' : 'application/json',
+    });
+    let dato= {correo:correo};
+    return this.http.post(url,dato,{headers: headers});
+  }
+
+
 }

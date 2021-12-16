@@ -5,6 +5,7 @@ import {AvisosService} from 'src/app/shared/services/avisos.service';
 import { RestUserService } from '../../services/rest-user.service';
 import {PerfilPropio} from '../../models/perfil';
 
+
 @Component({
   selector: 'app-mi-perfil',
   templateUrl: './mi-perfil.component.html',
@@ -15,8 +16,12 @@ export class MiPerfilComponent implements OnInit {
   public nombre : string;
   public fotoPerfil: string;
   public logo: string;
-  public correo: string;
+  public correoAnt: string;
+  public password2: string;
   public MIperfil: any = []
+  public logoOscuro: string;
+  public correo: string;
+  public tema: string;
 
   miPerfil:FormGroup;
   submitted: boolean =false;
@@ -29,7 +34,11 @@ export class MiPerfilComponent implements OnInit {
     this.nombre='Wiikinder';
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
+    this.correoAnt='';
+    this.password2='';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
 
     this.miPerfil= this.formBuilder.group({
       nombre:['',[Validators.required]],
@@ -37,9 +46,10 @@ export class MiPerfilComponent implements OnInit {
       edad:['',[Validators.required]],
       ciudad:['',[Validators.required]],
       correo:['',[Validators.required, Validators.email]],
-      password:['',[Validators.required, Validators.pattern]],
+      password1:['',[Validators.required, Validators.pattern]],
       passRepeat:['',[Validators.required, Validators.pattern]],
       descripcion:['',[Validators.required]],
+      tema:['',[Validators.required]],
     });
    }
   ngOnInit(): void {
@@ -55,6 +65,9 @@ export class MiPerfilComponent implements OnInit {
   public getMIPerfil(){
     this.restUserService.getMIPerfil(this.correo).subscribe((response)=>{
         this.MIperfil=response;
+        console.log( this.MIperfil);
+        //Como es una llamada asincrona, obtengo mi perfil aqui y despues llamo a updateFrom para
+        //poner los datos en el formulario
         this.updateForm();
         this.restUserService.darCorreo(this.correo);
       });
@@ -70,9 +83,10 @@ export class MiPerfilComponent implements OnInit {
       this.miPerfil.controls['correo'].setValue(this.MIperfil[0].correo);
       this.miPerfil.controls['descripcion'].setValue(this.MIperfil[0].descripcion);
       this.miPerfil.controls['edad'].setValue(this.MIperfil[0].edad);
-      this.miPerfil.controls['password'].setValue(this.MIperfil[0].password);
+      this.miPerfil.controls['password1'].setValue(this.MIperfil[0].password);
       this.miPerfil.controls['passRepeat'].setValue(this.MIperfil[0].password);
       this.miPerfil.controls['ciudad'].setValue(this.MIperfil[0].ciudad);
+      this.miPerfil.controls['tema'].setValue(this.MIperfil[0].tema);
     }
 
   onVolver(){
@@ -90,25 +104,34 @@ export class MiPerfilComponent implements OnInit {
     if(this.miPerfil.invalid)
       return;
 
-   /*let user= new Persona(
-     this.nuevoUsuario.value.nombre,
-     this.nuevoUsuario.value.nick,
-     this.nuevoUsuario.value.correo,
-     this.nuevoUsuario.value.ciudad,
-     this.nuevoUsuario.value.edad,
-     this.nuevoUsuario.value.password,
-     this.nuevoUsuario.value.passRepeat,
-     this.nuevoUsuario.value.id_genero=parseInt(this.nuevoUsuario.value.id_genero)
-     );*/
+   let perfil= new PerfilPropio(
+    this.miPerfil.value.descripcion,
+    this.miPerfil.value.correo,
+    this.correoAnt=this.correo,
+    this.miPerfil.value.nick,
+    this.miPerfil.value.nombre,
+    this.miPerfil.value.edad=parseInt(this.miPerfil.value.edad),
+     this.miPerfil.value.ciudad,
+     this.miPerfil.value.password1,
+     this.password2=this.miPerfil.value.passRepeat,
+     this.miPerfil.value.tema
+     );
 
-     /*this.restUserService.addUser(user).subscribe({
+     if(this.miPerfil.value.tema=='claro'){
+       sessionStorage.setItem('tema','claro');
+     }else{
+      sessionStorage.setItem('tema','oscuro');
+     }
+
+     this.restUserService.editarPerfil(perfil).subscribe({
        next:()=>{
-         this.notificationService.showMessage(`Usuario ${user.correo} registrado correctamente'`,'/formulario-preferencias');
-         this.restUserService.darCorreoPersonaRegistrandose(user.correo);
+         this.notificationService.showMessage(`Usuario ${perfil.correo} modificado correctamente'`,'/usuario/menu');
+         //this.restUserService.darCorreoPersonaRegistrandose(perfil.correo);
        },
        error: e =>{
-         this.notificationService.showMessage(`Fallo en el registro: `+e);
+         this.notificationService.showMessage(`Fallo al modificar: `+e);
        }
-     })*/
+     })
+
   }
 }

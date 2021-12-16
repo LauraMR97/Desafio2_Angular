@@ -1,4 +1,4 @@
-export interface FormResponse{
+export interface PerfilResponse{
   descripcion: string
   correo: string
   correoAnt: string
@@ -8,5 +8,6 @@ export interface FormResponse{
   ciudad: string
   password1: string
   password2: string
+  tema: string
 
  }

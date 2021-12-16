@@ -102,10 +102,6 @@ onReset(){
   this.rellenoFormulario.reset();
 }
 
-onVolver(){
-  this.router.navigate(['/registro']);
-}
-
 }
 
 
