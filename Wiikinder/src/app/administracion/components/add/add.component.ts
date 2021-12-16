@@ -100,11 +100,11 @@ export class AddComponent implements OnInit {
 
        this.administracionService.addUser(perfil).subscribe({
         next:()=>{
-          this.notificationService.showMessage(`Usuario ${perfil.correo} modificado correctamente'`,'/administracion/crud');
+          this.notificationService.showMessage(`Usuario ${perfil.correo} añadido correctamente'`,'/administracion/crud');
           //this.restUserService.darCorreoPersonaRegistrandose(perfil.correo);
         },
         error: e =>{
-          this.notificationService.showMessage(`Fallo al modificar: `+e);
+          this.notificationService.showMessage(`Fallo al añadir: `+e);
         }
       })
   }
