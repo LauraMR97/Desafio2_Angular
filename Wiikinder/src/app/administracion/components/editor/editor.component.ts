@@ -16,9 +16,11 @@ export class EditorComponent implements OnInit {
   public nombre : string;
   public fotoPerfil: string;
   public logo: string;
+  public logoOscuro: string;
   public perfil: any = [];
   public correo: string;
   public correoAnt: string;
+  public tema: string;
 
   editForm:FormGroup;
   submitted: boolean =false;
@@ -34,8 +36,10 @@ export class EditorComponent implements OnInit {
     this.nombre='Wiikinder';
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo='';
     this.correoAnt='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
 
     this.editForm= this.formBuilder.group({
       correo:['',[Validators.required, Validators.email]],

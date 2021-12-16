@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
       }
        },
        error: e =>{
-         this.notificacionService.showMessage(`Fallo en el login: `+e);
+         this.notificacionService.showMessage('Fallo en el login');
        }
      })
   }

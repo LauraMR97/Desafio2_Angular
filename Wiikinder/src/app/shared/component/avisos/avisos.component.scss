@@ -1,0 +1,14 @@
+.posicionar {
+    width: 300px;
+    height: 150px;
+    left: 500px;
+    border: 1px solid black;
+    position: fixed;
+    z-index: 2;
+    top: 200px;
+    background-color: aliceblue
+}
+
+.palabra {
+    color: darkred;
+}

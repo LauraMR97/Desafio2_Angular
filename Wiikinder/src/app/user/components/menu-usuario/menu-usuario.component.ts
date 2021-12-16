@@ -58,7 +58,7 @@ export class MenuUsuarioComponent implements OnInit {
   onVolver(){
     this.restUserService.desconectar(this.correo).subscribe((response)=>{
       this.respuesta=response;
-      this.notificacionService.showMessage(this.correo + 'Te has desconectado, vuelve pronto!');
+      this.notificacionService.showMessage(this.correo + ' Te has desconectado, vuelve pronto!');
     });
     this.router.navigate([' ']);
   }

@@ -61,7 +61,7 @@ export class PassOlvidadaComponent implements OnInit {
         this.user= user;
        },
        error: e =>{
-         this.notificacionService.showMessage(`Correo Invalido: `+e);
+         this.notificacionService.showMessage('Correo invalido');
        }
      })
      /*this.notificacionService.showMessage(

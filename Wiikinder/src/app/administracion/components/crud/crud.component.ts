@@ -16,7 +16,9 @@ export class CrudComponent implements OnInit {
   public respuesta: any =[];
   public nombre : string;
   public logo: string;
+  public logoOscuro: string;
   public correo: string;
+  public tema: string;
 
   constructor(
     private restCrudService: RestAdministracionCrudService,
@@ -27,7 +29,9 @@ export class CrudComponent implements OnInit {
     ) {
     this.nombre='Wiikinder';
     this.logo='../assets/logo.png';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo ='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
   }
 
   ngOnInit(): void {
@@ -84,5 +88,25 @@ export class CrudComponent implements OnInit {
 
   add(){
     this.router.navigate(['/administracion/crear']);
+  }
+
+  cambiarTema(){
+
+    if(this.tema=='claro'){
+      sessionStorage.setItem('tema','oscuro');
+    }else{
+      sessionStorage.setItem('tema','claro');
+    }
+
+    this.restCrudService.tema(this.correo).subscribe({
+      next:()=>{
+        this.notificacionService.showMessage(`Tema modificado correctamente'`,'/administracion/crud');
+        //this.restUserService.darCorreoPersonaRegistrandose(perfil.correo);
+      },
+      error: e =>{
+        this.notificacionService.showMessage(`Fallo al modificar: `+e);
+      }
+    })
+
   }
 }

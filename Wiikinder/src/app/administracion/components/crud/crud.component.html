@@ -1,84 +1,182 @@
-<div class="container-fluid">
+<div *ngIf="(tema=='claro')">
+    <div class="container-fluid">
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <header class="row  text-center fondoHeaderYFooter titulos">
-            <div class="col-11 col-sm-11 col-md-11 col-lg-11">
-                <div class="p-3">
-                    <div class="row">
-                        <h1 class="tituloLogo"><img class="col-4 col-sm-3 col-md-2 col-lg-2" src="{{logo}}">Wiikinder</h1>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <header class="row  text-center fondoHeaderYFooter titulos">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-11">
+                    <div class="p-3">
+                        <div class="row">
+                            <h1 class="tituloLogo"><img class="col-4 col-sm-3 col-md-2 col-lg-2" src="{{logo}}">Wiikinder</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <main>
-            <section class="row fondoGeneral d-flex justify-content-center pt-3">
-                <div class="col-12 col-sm-12 col-md-8">
-                    <div *ngIf="personas.length>0" class="table-responsive">
-                        <form>
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">#</th>
-                                        <th scope="col">Correo</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Activo</th>
-                                        <th scope="col">Accion</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-secondary" *ngFor="let persona of personas; index as i">
-                                    <tr *ngIf="persona.correo != this.correo">
-                                        <td>{{i+1}}</td>
-                                        <td>{{persona.correo}}</td>
-                                        <td>{{persona.nombre}}</td>
-                                        <td>{{persona.activo}}</td>
+            <main>
+                <section class="row fondoGeneral d-flex justify-content-center pt-3">
+                    <div class="col-12 col-sm-12 col-md-8">
+                        <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="cambiarTema()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
+                      <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                    </svg>Tema</button>
+                        <div *ngIf="personas.length>0" class="table-responsive">
+                            <form>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Activo</th>
+                                            <th scope="col">Accion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-secondary" *ngFor="let persona of personas; index as i">
+                                        <tr *ngIf="persona.correo != this.correo">
+                                            <td>{{i+1}}</td>
+                                            <td>{{persona.correo}}</td>
+                                            <td>{{persona.nombre}}</td>
+                                            <td>{{persona.activo}}</td>
 
-                                        <!--Activar-->
-                                        <td><button class="btn btn-primary mb-2 mx-2" type="submit" (click)="activar(persona.correo)">
+                                            <!--Activar-->
+                                            <td><button class="btn btn-primary mb-2 mx-2" type="submit" (click)="activar(persona.correo)">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                                           <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                                         </svg></button>
-                                            <!--Desactivar-->
-                                            <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="desactivar(persona.correo)">
+                                                <!--Desactivar-->
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="desactivar(persona.correo)">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
                                           </svg></button>
-                                            <!--Editar-->
-                                            <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="editar(persona.correo)">
+                                                <!--Editar-->
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="editar(persona.correo)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                               <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                                             </svg></button>
 
-                                            <!--Eliminar-->
-                                            <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="borrar(persona.correo)">
+                                                <!--Eliminar-->
+                                                <button class="btn btn-primary mb-2 mx-2" type="submit" (click)="borrar(persona.correo)">
                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
                                               </svg></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="row pt-4 d-flex justify-content-center border-top border-white">
-                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="add()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row pt-4 d-flex justify-content-center border-top border-white">
+                                    <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="add()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                               </svg></button>
-                            </div>
-                            <div class="row pt-4 d-flex justify-content-center border-top border-white">
-                                <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
-                            </div>
-                            <app-avisos></app-avisos>
-                        </form>
+                                </div>
+                                <div class="row pt-4 d-flex justify-content-center border-top border-white">
+                                    <button class="col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                                </div>
+                                <app-avisos></app-avisos>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+
+            <footer class="bg-light text-center text-lg-start row">
+                <div class="text-center p-3 titulos col-12 col-sm-12 col-md-12 col-lg-12 fondoHeaderYFooter">
+                    © 2021 Copyright: LauraM
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="(tema=='oscuro')">
+
+    <div class="container-fluid">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <header class="row  text-center fondoHeaderYFooterOscuros titulos">
+                <div class="col-11 col-sm-11 col-md-11 col-lg-11">
+                    <div class="p-3">
+                        <div class="row">
+                            <h1 class="tituloLogoOscuro"><img class="col-4 col-sm-3 col-md-2 col-lg-2" src="{{logoOscuro}}">Wiikinder</h1>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </header>
+
+            <main>
+                <section class="row fondoGeneral d-flex justify-content-center pt-3">
+                    <div class="col-12 col-sm-12 col-md-8">
+                        <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="cambiarTema()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
+                  <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>Tema</button>
+                        <div *ngIf="personas.length>0" class="table-responsive">
+                            <form>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr class="table-active">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Activo</th>
+                                            <th scope="col">Accion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-danger" *ngFor="let persona of personas; index as i">
+                                        <tr *ngIf="persona.correo != this.correo">
+                                            <td>{{i+1}}</td>
+                                            <td>{{persona.correo}}</td>
+                                            <td>{{persona.nombre}}</td>
+                                            <td>{{persona.activo}}</td>
+
+                                            <!--Activar-->
+                                            <td><button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="activar(persona.correo)">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                                      <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                    </svg></button>
+                                                <!--Desactivar-->
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="desactivar(persona.correo)">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                      </svg></button>
+                                                <!--Editar-->
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="editar(persona.correo)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                          <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg></button>
+
+                                                <!--Eliminar-->
+                                                <button class="oscuro btn btn-primary mb-2 mx-2" type="submit" (click)="borrar(persona.correo)">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                          </svg></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row pt-4 d-flex justify-content-center border-top border-white">
+                                    <button class="oscuro col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="add()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                          </svg></button>
+                                </div>
+                                <div class="row pt-4 d-flex justify-content-center border-top border-white">
+                                    <button class=" oscuro col-12 col-sm-12 col-md-3 col-lg-2 btn btn-primary mb-2 mx-2" type="submit" (click)="onVolver()">Volver</button>
+                                </div>
+                                <app-avisos></app-avisos>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
 
 
-        <footer class="bg-light text-center text-lg-start row">
-            <div class="text-center p-3 titulos col-12 col-sm-12 col-md-12 col-lg-12 fondoHeaderYFooter">
-                © 2021 Copyright: LauraM
-            </div>
-        </footer>
+            <footer class="bg-light text-center text-lg-start row">
+                <div class="text-center p-3 titulos col-12 col-sm-12 col-md-12 col-lg-12 fondoHeaderYFooterOscuros">
+                    © 2021 Copyright: LauraM
+                </div>
+            </footer>
 
+        </div>
     </div>
+
 </div>

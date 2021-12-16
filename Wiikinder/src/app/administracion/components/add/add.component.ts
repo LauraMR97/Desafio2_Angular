@@ -18,6 +18,8 @@ export class AddComponent implements OnInit {
   public perfil: any = [];
   public correo: string;
   public correoAnt: string;
+  public tema: string;
+  public logoOscuro: string;
 
   addForm:FormGroup;
   submitted: boolean =false;
@@ -32,8 +34,10 @@ export class AddComponent implements OnInit {
     this.nombre='Wiikinder';
     this.fotoPerfil='../assets/perfilGenerico.png';
     this.logo='../assets/logo.png';
+    this.logoOscuro='../assets/logoOscuro.png';
     this.correo='';
     this.correoAnt='';
+    this.tema=this.tema =(sessionStorage.getItem('tema') || '{}');
 
     this.addForm= this.formBuilder.group({
       correo:['',[Validators.required, Validators.email]],
