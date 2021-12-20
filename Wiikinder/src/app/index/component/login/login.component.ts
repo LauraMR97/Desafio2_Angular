@@ -71,14 +71,14 @@ export class LoginComponent implements OnInit {
      this.restLoginService.login(this.user).subscribe({
        next:(user)=>{
          if(this.rol=='2'){
+          this.restLoginService.darCorreo(user.correo);
          this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/usuario/menu', {queryParams: this.user});
         this.user= user;
-        this.restLoginService.darCorreo(user.correo);
         //this.tema =(sessionStorage.getItem('tema') || '{}');
       }else{
+        this.restLoginService.darCorreo(user.correo);
         this.notificacionService.showMessage(`Usuario ${user.correo} logeado'`,'/administracion/crud', {queryParams: this.user});
         this.user= user;
-        this.restLoginService.darCorreo(user.correo);
       }
        },
        error: e =>{

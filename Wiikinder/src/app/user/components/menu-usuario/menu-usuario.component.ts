@@ -60,6 +60,7 @@ export class MenuUsuarioComponent implements OnInit {
       this.respuesta=response;
       this.notificacionService.showMessage(this.correo + ' Te has desconectado, vuelve pronto!');
     });
+    this.restUserService.darCorreo('');
     this.router.navigate([' ']);
   }
 
